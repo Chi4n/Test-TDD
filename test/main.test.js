@@ -1,5 +1,13 @@
 import { test, describe } from "@jest/globals";
-import { suma, dividir, CalculadorDeArea, addUser } from "./main";
+import {
+  suma,
+  dividir,
+  CalculadorDeArea,
+  addUser,
+  isPalindrome,
+  convertTemperature,
+  generateRandomPassword
+} from "./main";
 import { expect } from "chai";
 
 test("sumar 1 + 2 es igual a 3", () => {
@@ -49,4 +57,27 @@ test(" Agregar usuario a la lista", () => {
   };
   addUser(listaUsuarios, nuevoUser);
   expect(listaUsuarios[listaUsuarios.length - 1]).to.equal(nuevoUser);
+});
+
+test("Verificar si una palabra es palindromo, quiere decir si la palabra se puede leer igual de atras para adelante", () => {
+  const palabra = "radar";
+  expect(isPalindrome(palabra)).to.equal(true);
+});
+
+test("convertidor de temperatura, convierta correctamente las temperaturas de Celsius a Fahrenheit.", () => {
+  expect(convertTemperature(0)).to.equal(32);
+});
+test("convertidor de temperatura, convierta correctamente las temperaturas de Celsius a Fahrenheit.", () => {
+  expect(convertTemperature(100)).to.equal(212);
+});
+test("convertidor de temperatura, convierta correctamente las temperaturas de Celsius a Fahrenheit.", () => {
+  expect(convertTemperature(-40)).to.equal(-40);
+});
+
+test("generateRandomPassword genere contraseñas aleatorias con la longitud correct, que se le pasa por parametro", () => {
+  expect(generateRandomPassword(8).length).to.equal(8)
+});
+
+test("generateRandomPassword genere contraseñas aleatorias con la longitud correct, que se le pasa por parametro", () => {
+  expect(generateRandomPassword(10).length).to.equal(10)
 });
